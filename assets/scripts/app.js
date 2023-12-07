@@ -1,16 +1,7 @@
 let secretNumber = numberRandom();
 let attempts = 1;
 
-/*Selecionando o elemento e alterando conteúdo dinâmicamente.
-
-    let title = document.querySelector('h1');
-    title.innerHTML = 'Jogo do número secreto';
-
-    let paragraph =  document.querySelector('#paragraph');
-    paragraph.innerHTML = 'Escolha um número de 1 a 100';
-*/
-
-//Refatorando o código para evitar repetições
+//Função exibir conteúdo dinâmico
 function displayContent(id, content){
     let field = document.querySelector(id);
     field.innerHTML = content;
@@ -38,7 +29,11 @@ function checkGuess() {
         displayContent('#paragraph', 'O número secreto é menor!');
     };
     attempts++;
+    clearFild();
 };
 
-  
- 
+// Função limpar input
+function clearFild() {
+    guess = document.querySelector('#input');
+    guess.value = '';
+};
