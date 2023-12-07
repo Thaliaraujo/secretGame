@@ -7,6 +7,8 @@ let attempts = 1;
 function displayContent(id, content){
     let field = document.querySelector(id);
     field.innerHTML = content;
+    responsiveVoice.speak(content, 'Brazilian Portuguese Female', 
+    {rate:1.2});
 };
 
 function initialMessage(){
@@ -48,7 +50,7 @@ function checkGuess() {
     } else if(guess > secretNumber){
         displayContent('#paragraph', 'O número secreto é menor!');
     };
-    
+
     attempts++;
     clearFild();
 };
