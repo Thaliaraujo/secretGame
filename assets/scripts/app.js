@@ -7,8 +7,7 @@ let attempts = 1;
 function displayContent(id, content){
     let field = document.querySelector(id);
     field.innerHTML = content;
-    responsiveVoice.speak(content, 'Brazilian Portuguese Female', 
-    {rate:1.2});
+    responsiveVoice.speak(content, 'Brazilian Portuguese Female', {rate:1.2});
 };
 
 function initialMessage(){
