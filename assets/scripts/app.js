@@ -1,3 +1,5 @@
+let listDrawnNumbers = [];
+let limitNumber = 100;
 let secretNumber = numberRandom();
 let attempts = 1;
 
@@ -16,12 +18,25 @@ initialMessage();
 
 //Função gerar número aleatório
 function numberRandom() {
-    return parseInt(Math.random() * 100 + 1);
+    let drawnNumber = parseInt(Math.random() * limitNumber + 1);
+    let numberElementsInList = listDrawnNumbers.length;
+    
+    if (numberElementsInList == limitNumber) {
+        listDrawnNumbers = [];
+    };
+
+    if(listDrawnNumbers.includes(drawnNumber)) {
+        return numberRandom();
+    }else{
+        listDrawnNumbers.push(drawnNumber);
+        return drawnNumber;
+    };
 };
 
 // Função para verificar o palpite
 function checkGuess() {
     let guess = document.querySelector('#input').value
+
     if(guess == secretNumber) {
         let attemptsWord = attempts > 1 ? 'tentativas' : 'tentativa';
         let attemptsMessage = `Você descobriu o número secreto com ${attempts} ${attemptsWord}!`;    
@@ -33,6 +48,7 @@ function checkGuess() {
     } else if(guess > secretNumber){
         displayContent('#paragraph', 'O número secreto é menor!');
     };
+    
     attempts++;
     clearFild();
 };
